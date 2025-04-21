@@ -19,7 +19,7 @@
       <!-- Llevas acompañante -->
       <label>¿Llevas acompañante?</label>
       <div class="radio-group">
-        <label><input type="radio" name="llevaAcompanante" value="Sí" required> Sí</label>
+        <label><input type="radio" name="llevaAcompanante" value="Si" required> Si</label>
         <label><input type="radio" name="llevaAcompanante" value="No"> No</label>
       </div>
 
@@ -54,7 +54,7 @@
 
     radios.forEach(radio => {
       radio.addEventListener('change', () => {
-        if (radio.value === 'Sí') {
+        if (radio.value === 'Si') {
           campoAcompanante.classList.remove('hidden');
           campoAcompanante.querySelector('input').setAttribute('required', true);
         } else {
