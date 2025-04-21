@@ -1,0 +1,66 @@
+body {
+  font-family: 'Georgia', serif;
+  background-color: #fdf6f0;
+  color: #40322b;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+  background-color: #fffaf6;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  margin-top: 3rem;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #a1645e;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+.radio-group {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #d9cfc5;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.radio-group {
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  display: block;
+  width: 100%;
+  background-color: #a1645e;
+  color: white;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #8b544e;
+}
+
+.hidden {
+  display: none;
+}
