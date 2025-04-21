@@ -65,28 +65,32 @@ button:hover {
   display: none;
 }
 
-.submit-btn {
+button {
   position: relative;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  background: #000;
-  color: white;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  transition: background 0.3s ease;
 }
 
-.spinner {
-  width: 14px;
-  height: 14px;
-  border: 2px solid transparent;
-  border-top-color: white;
+button.loading .btn-text {
+  visibility: hidden;
+}
+
+button.loading .btn-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 3px solid white;
+  border-top: 3px solid #555;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
