@@ -67,6 +67,14 @@
         }
       });
     });
+
+    const form = document.querySelector("form");
+    const btn = document.getElementById("submitBtn");
+  
+    form.addEventListener("submit", () => {
+      btn.disabled = true;
+      btn.classList.add("loading");
+    });
   </script>
 </body>
 </html>
