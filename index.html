@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucía & Álvaro - Confirmación</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Nos casamos</h1>
+    <p>¡Estamos deseando celebrar con vosotros! Por favor, rellena el siguiente formulario para confirmar tu asistencia.</p>
+
+    <form action="https://formsubmit.co/TU_EMAIL@example.com" method="POST" id="rsvp-form">
+      <!-- Nombre invitado -->
+      <label for="nombre">Nombre del invitad@</label>
+      <input type="text" id="nombre" name="nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
+
+      <!-- Llevas acompañante -->
+      <label>¿Llevas acompañante?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="llevaAcompanante" value="Sí" required> Sí</label>
+        <label><input type="radio" name="llevaAcompanante" value="No"> No</label>
+      </div>
+
+      <!-- Nombre acompañante -->
+      <div id="campo-acompanante" class="hidden">
+        <label for="nombreAcompanante">Nombre del acompañante</label>
+        <input type="text" id="nombreAcompanante" name="nombreAcompanante" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
+      </div>
+
+      <!-- Dirección -->
+      <label for="direccion">Dirección</label>
+      <input type="text" id="direccion" name="direccion" required>
+
+      <!-- Intolerancias y alergias -->
+      <label for="alergias">Intolerancias y alergias</label>
+      <input type="text" id="alergias" name="alergias" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]*" title="Solo letras y espacios">
+
+      <!-- Redirección tras envío -->
+      <input type="hidden" name="_next" value="https://TU_USUARIO.github.io/TU_REPOSITORIO/gracias.html">
+      <input type="hidden" name="_captcha" value="false">
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    const radios = document.querySelectorAll('input[name="llevaAcompanante"]');
+    const campoAcompanante = document.getElementById('campo-acompanante');
+
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (radio.value === 'Sí') {
+          campoAcompanante.classList.remove('hidden');
+          campoAcompanante.querySelector('input').setAttribute('required', true);
+        } else {
+          campoAcompanante.classList.add('hidden');
+          campoAcompanante.querySelector('input').removeAttribute('required');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
