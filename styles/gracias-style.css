@@ -1,0 +1,41 @@
+.container {
+    text-align: center;
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #fffaf6;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+/* Estilos básicos para los módulos */
+.gracias-module {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: transparent; /* Para heredar el fondo del container */
+    border-radius: 8px; /* Opcional */
+    /* box-shadow: 0 0 5px rgba(0,0,0,0.05); /* Opcional */
+}
+.iban {
+    font-family: monospace;
+    font-size: 1em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.copy-iban-btn {
+    background-color: #a1645e;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+.lista-regalos {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+.fecha-gracias {
+    font-size: 1.2em;
+    color: #a1645e;
+    margin-top: 5px;
+}

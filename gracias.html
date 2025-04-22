@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>¡Gracias!</title>
-  <link rel="stylesheet" href="styles/form-style.css">
-  <link rel="stylesheet" href="styles/style.css">
-</head>
+    <meta charset="UTF-8">
+    <title>¡Gracias!</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/gracias-styles.css"> </head>
 <body>
-  <div class="container center-text">
-    <h1>¡Gracias por confirmar!</h1>
-    <p>Estamos deseando compartir este día tan especial contigo. 💕</p>
-  </div>
+    <div class="container">
+        <div id="header-container"></div>
+        <div id="bank-account-container"></div>
+        <div id="present-list-container"></div>
+    </div>
+
+    <script>
+        async function loadGraciasModules() {
+            const headerResponse = await fetch('modules/header.html');
+            const bankAccountResponse = await fetch('modules/bank-account.html');
+            const presentListResponse = await fetch('modules/present-list.html');
+
+            const headerHTML = await headerResponse.text();
+            const bankAccountHTML = await bankAccountResponse.text();
+            const presentListHTML = await presentListResponse.text();
+
+            document.getElementById('header-container').innerHTML = headerHTML;
+            document.getElementById('bank-account-container').innerHTML = bankAccountHTML;
+            document.getElementById('present-list-container').innerHTML = presentListHTML;
+
+            initializeCopyIbanButton(); // Llamamos a la función para el botón de copiar IBAN
+        }
+
+        /**
+         * Inicializa el botón para copiar el IBAN al portapapeles.
+         */
+        function initializeCopyIbanButton() {
+            const copyButton = document.querySelector('.copy-iban-btn');
+            const ibanText = document.querySelector('.iban');
+
+            if (copyButton && ibanText) {
+                copyButton.addEventListener('click', () => {
+                    navigator.clipboard.writeText(ibanText.textContent)
+                        .then(() => {
+                            alert('¡IBAN copiado al portapapeles!');
+                        })
+                        .catch(err => {
+                            console.error('Error al copiar el IBAN: ', err);
+                        });
+                });
+            }
+        }
+
+        loadGraciasModules();
+    </script>
 </body>
 </html>

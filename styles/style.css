@@ -28,6 +28,10 @@ body {
     text-align: center; /* Centramos el texto dentro de las secciones por defecto */
 }
 
+.center-text {
+    text-align: center;
+}
+
 /* Estilos para pantallas más pequeñas (móviles) */
 @media (max-width: 767px) {
     .container {
