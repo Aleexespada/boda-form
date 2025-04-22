@@ -12,28 +12,27 @@
         <p>¡Estamos deseando celebrar con vosotros! Por favor, rellena el siguiente formulario para confirmar tu asistencia.</p>
 
         <form action="https://formsubmit.co/alexespadap@gmail.com" method="POST" id="rsvp-form">
-            <label for="nombre">Nombre del invitad@</label>
-            <input type="text" id="nombre" name="nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
-
-            <label>¿Llevas acompañante?</label>
-            <div class="radio-group">
-                <label><input type="radio" name="llevaAcompanante" value="Si" required> Si</label>
-                <label><input type="radio" name="llevaAcompanante" value="No"> No</label>
+            <div class="form-group">
+                <label for="nombreInvitado">Nombre y Apellidos</label>
+                <input type="text" id="nombreInvitado" name="nombreInvitado" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
             </div>
 
-            <div id="campo-acompanante" class="hidden">
-                <label for="nombreAcompanante">Nombre del acompañante</label>
-                <input type="text" id="nombreAcompanante" name="nombreAcompanante" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
+            <div class="form-group">
+                <label for="nombreAcompanante">Nombre y Apellido (Acompañante)</label>
+                <input type="text" id="nombreAcompanante" name="nombreAcompanante" placeholder="Rellenar solo si el acompañante no tiene invitación" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
             </div>
 
-            <label for="direccion">Dirección</label>
-            <input type="text" id="direccion" name="direccion" required>
+            <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion" required>
+            </div>
 
-            <label for="alergias">Intolerancias y alergias</label>
-            <input type="text" id="alergias" name="alergias" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]*" title="Solo letras y espacios">
+            <div class="form-group">
+                <label for="alergias">Intolerancias y alergias</label>
+                <input type="text" id="alergias" name="alergias" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]*" title="Solo letras y espacios">
+            </div>
 
             <input type="hidden" name="sitio" value="boda-formulario">
-
             <input type="hidden" name="_next" value="https://Aleexespada.github.io/boda-form/gracias.html">
             <input type="hidden" name="_captcha" value="false">
 
@@ -46,34 +45,18 @@
     </div>
 
     <script>
-        const radios = document.querySelectorAll('input[name="llevaAcompanante"]');
-        const campoAcompanante = document.getElementById('campo-acompanante');
-
-        radios.forEach(radio => {
-            radio.addEventListener('change', () => {
-                if (radio.value === 'Si') {
-                    campoAcompanante.classList.remove('hidden');
-                    campoAcompanante.querySelector('input').setAttribute('required', true);
-                } else {
-                    campoAcompanante.classList.add('hidden');
-                    campoAcompanante.querySelector('input').removeAttribute('required');
-                }
-            });
-        });
-
         const form = document.querySelector("form");
         const btn = document.getElementById("submitBtn");
 
         form.addEventListener("submit", (event) => {
-            event.preventDefault(); // Evita la recarga inmediata
+            event.preventDefault();
 
             btn.disabled = true;
             btn.classList.add("loading");
 
-            // Simula un tiempo de carga antes de enviar el formulario
             setTimeout(() => {
-                form.submit(); // Envío real del formulario
-            }, 1500); // Espera 1.5 segundos (puedes ajustar este valor)
+                form.submit();
+            }, 1500);
         });
     </script>
 </body>
