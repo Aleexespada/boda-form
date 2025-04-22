@@ -32,26 +32,26 @@ label {
 
 input[type="text"],
 input[type="email"] {
-    width: 100%;
+    width: calc(100% - 0px); /* Recalculamos el ancho restando cualquier borde o padding */
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #d9cfc5;
     border-radius: 6px;
     font-size: 1rem;
-    box-sizing: border-box; /* Añadido para que el padding no aumente el ancho total */
+    box-sizing: border-box; /* Asegura que padding y border se incluyen en el ancho */
 }
 
 .radio-group {
     display: flex;
-    flex-direction: column; /* Cambiado a columna para que los elementos estén uno debajo del otro */
-    gap: 0.5rem; /* Añadido espacio entre las opciones */
+    flex-direction: column;
+    gap: 0.5rem;
     margin-bottom: 1rem;
 }
 
 .radio-group label {
     display: flex;
     align-items: center;
-    font-weight: normal; /* Para que no se vea en negrita */
+    font-weight: normal;
 }
 
 .radio-group input[type="radio"] {
@@ -61,7 +61,7 @@ input[type="email"] {
 button {
     position: relative;
     display: block;
-    width: 100%; /* Ahora el botón ocupa el 100% del ancho del contenedor */
+    width: 100%;
     background-color: #a1645e;
     color: white;
     padding: 0.75rem;
@@ -70,7 +70,7 @@ button {
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease;
-    box-sizing: border-box; /* Añadido para que el padding no aumente el ancho total */
+    box-sizing: border-box; /* Asegura que padding y border se incluyen en el ancho */
 }
 
 button:hover {
