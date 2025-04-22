@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lucía & Álvaro - Confirmación</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucía & Álvaro - Confirmación</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Nos casamos</h1>
-    <p>¡Estamos deseando celebrar con vosotros! Por favor, rellena el siguiente formulario para confirmar tu asistencia.</p>
+    <div class="container">
+        <h1>Nos casamos</h1>
+        <p>¡Estamos deseando celebrar con vosotros! Por favor, rellena el siguiente formulario para confirmar tu asistencia.</p>
 
-    <form action="https://formsubmit.co/alexespadap@gmail.com" method="POST" id="rsvp-form">
-      <!-- Nombre invitado -->
-      <label for="nombre">Nombre del invitad@</label>
-      <input type="text" id="nombre" name="nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
+        <form action="https://formsubmit.co/alexespadap@gmail.com" method="POST" id="rsvp-form">
+            <label for="nombre">Nombre del invitad@</label>
+            <input type="text" id="nombre" name="nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
 
-      <!-- Llevas acompañante -->
-      <label>¿Llevas acompañante?</label>
-      <div class="radio-group">
-        <label><input type="radio" name="llevaAcompanante" value="Si" required> Si</label>
-        <label><input type="radio" name="llevaAcompanante" value="No"> No</label>
-      </div>
+            <label>¿Llevas acompañante?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="llevaAcompanante" value="Si" required> Si</label>
+                <label><input type="radio" name="llevaAcompanante" value="No"> No</label>
+            </div>
 
-      <!-- Nombre acompañante -->
-      <div id="campo-acompanante" class="hidden">
-        <label for="nombreAcompanante">Nombre del acompañante</label>
-        <input type="text" id="nombreAcompanante" name="nombreAcompanante" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
-      </div>
+            <div id="campo-acompanante" class="hidden">
+                <label for="nombreAcompanante">Nombre del acompañante</label>
+                <input type="text" id="nombreAcompanante" name="nombreAcompanante" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
+            </div>
 
-      <!-- Dirección -->
-      <label for="direccion">Dirección</label>
-      <input type="text" id="direccion" name="direccion" required>
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" required>
 
-      <!-- Intolerancias y alergias -->
-      <label for="alergias">Intolerancias y alergias</label>
-      <input type="text" id="alergias" name="alergias" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]*" title="Solo letras y espacios">
+            <label for="alergias">Intolerancias y alergias</label>
+            <input type="text" id="alergias" name="alergias" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]*" title="Solo letras y espacios">
 
-      <!-- Campo oculto informativo de la boda -->
-      <input type="hidden" name="sitio" value="boda-formulario">
+            <input type="hidden" name="sitio" value="boda-formulario">
 
-      <!-- Redirección tras envío -->
-      <input type="hidden" name="_next" value="https://Aleexespada.github.io/boda-form/gracias.html">
-      <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://Aleexespada.github.io/boda-form/gracias.html">
+            <input type="hidden" name="_captcha" value="false">
 
-      <button type="submit" id="submitBtn">
-        <span class="btn-text">Enviar</span>
-        <span class="btn-spinner"></span>
-      </button>
+            <button type="submit" id="submitBtn">
+                <span class="btn-text">Enviar</span>
+                <span class="btn-spinner"></span>
+            </button>
 
-    </form>
-  </div>
+        </form>
+    </div>
 
-  <script>
-    const radios = document.querySelectorAll('input[name="llevaAcompanante"]');
-    const campoAcompanante = document.getElementById('campo-acompanante');
+    <script>
+        const radios = document.querySelectorAll('input[name="llevaAcompanante"]');
+        const campoAcompanante = document.getElementById('campo-acompanante');
 
-    radios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        if (radio.value === 'Si') {
-          campoAcompanante.classList.remove('hidden');
-          campoAcompanante.querySelector('input').setAttribute('required', true);
-        } else {
-          campoAcompanante.classList.add('hidden');
-          campoAcompanante.querySelector('input').removeAttribute('required');
-        }
-      });
-    });
+        radios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'Si') {
+                    campoAcompanante.classList.remove('hidden');
+                    campoAcompanante.querySelector('input').setAttribute('required', true);
+                } else {
+                    campoAcompanante.classList.add('hidden');
+                    campoAcompanante.querySelector('input').removeAttribute('required');
+                }
+            });
+        });
 
-    const form = document.querySelector("form");
-    const btn = document.getElementById("submitBtn");
-  
-    form.addEventListener("submit", () => {
-      btn.disabled = true;
-      btn.classList.add("loading");
-    });
-  </script>
+        const form = document.querySelector("form");
+        const btn = document.getElementById("submitBtn");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault(); // Evita la recarga inmediata
+
+            btn.disabled = true;
+            btn.classList.add("loading");
+
+            // Simula un tiempo de carga antes de enviar el formulario
+            setTimeout(() => {
+                form.submit(); // Envío real del formulario
+            }, 1500); // Espera 1.5 segundos (puedes ajustar este valor)
+        });
+    </script>
 </body>
 </html>
