@@ -1,7 +1,7 @@
 body {
     font-family: 'Georgia', serif;
-    background-color: #fdf6f0;
-    color: #40322b;
+    background-color: var(--accent-color);
+    color: var(--text-primary);
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -11,7 +11,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
     padding: 2rem;
-    background-color: #fffaf6;
+    background-color: var(--background-light);
     border-radius: 12px;
     /* Eliminado el box-shadow */
 }
@@ -60,6 +60,6 @@ body {
 
 h1 {
     font-size: 2rem;
-    color: #a1645e;
+    color: var(--primary-color);
     text-align: center;
 }

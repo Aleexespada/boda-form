@@ -1,0 +1,9 @@
+:root {
+    --primary-color: #a1645e; /* Color principal (botones, algunos títulos) */
+    --secondary-color: #8b544e; /* Color secundario (hover de botones) */
+    --accent-color: #fdf6f0; /* Color de fondo principal */
+    --background-light: #fffaf6; /* Color de fondo de contenedores */
+    --text-primary: #40322b; /* Color de texto principal */
+    --text-secondary: #776b63; /* Color de texto secundario (placeholders) */
+    --border-color: #d9cfc5; /* Color de bordes */
+}
