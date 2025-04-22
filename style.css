@@ -4,20 +4,44 @@ body {
     color: #40322b;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Para evitar barras de desplazamiento horizontales innecesarias */
 }
 
 .container {
     max-width: 600px;
-    margin: auto;
+    margin: 0 auto; /* Centrar horizontalmente */
     padding: 2rem;
     background-color: #fffaf6;
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
     border-radius: 12px;
-    margin-top: 3rem;
+    /* Eliminamos margin-top para que las secciones ocupen toda la altura */
 }
 
-.center-text {
-    text-align: center;
+/* Estilos para las secciones que ocuparán la altura de la pantalla */
+section {
+    min-height: 100vh; /* 100% de la altura del viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar el contenido verticalmente dentro de la sección */
+    padding: 2rem; /* Asegurar un espaciado interno */
+    box-sizing: border-box; /* Incluir el padding en el alto */
+    /* El background-color de cada sección puede ser transparente para heredar del body
+       o puedes darle un color diferente si lo deseas */
+    background-color: transparent;
+}
+
+/* Estilos específicos para el contenedor principal en pantallas más grandes */
+@media (min-width: 768px) {
+    .container {
+        margin-top: 3rem; /* Restauramos el margen superior para centrar el contenedor verticalmente */
+    }
+
+    section {
+        /* En pantallas grandes, el contenedor centrará el contenido horizontalmente
+           y el min-height: 100vh seguirá haciendo que la sección ocupe toda la altura */
+        padding-left: calc(50% - 300px); /* Ajuste para el padding izquierdo */
+        padding-right: calc(50% - 300px); /* Ajuste para el padding derecho */
+    }
 }
 
 h1 {
@@ -28,13 +52,14 @@ h1 {
 
 .form-group {
     margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 label {
     display: block;
     margin-bottom: 0.3rem;
     font-weight: bold;
-    text-align: left!important; /* Aseguramos que las etiquetas estén a la izquierda */
+    text-align: left !important; /* Mantenemos el important si es necesario */
 }
 
 input[type="text"],
