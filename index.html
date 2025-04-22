@@ -44,7 +44,7 @@
             <div id="locations-container"></div>
             <div id="program-container"></div>
             <div id="faq-container"></div>
-            <div id="form-container"></div>
+            <div id="assistance-form-container"></div>
         </main>
 
         <footer>
@@ -57,19 +57,19 @@
             const locationsResponse = await fetch('modules/locations.html');
             const programResponse = await fetch('modules/program.html');
             const faqResponse = await fetch('modules/faq.html');
-            const formResponse = await fetch('modules/form.html');
+            const assistanceFormResponse = await fetch('modules/assistance-form.html');
 
             const countdownHTML = await countdownResponse.text();
             const locationsHTML = await locationsResponse.text();
             const programHTML = await programResponse.text();
             const faqHTML = await faqResponse.text();
-            const formHTML = await formResponse.text();
+            const assistanceFormHTML = await assistanceFormResponse.text();
 
             document.getElementById('countdown-container').innerHTML = countdownHTML;
             document.getElementById('locations-container').innerHTML = locationsHTML;
             document.getElementById('program-container').innerHTML = programHTML;
             document.getElementById('faq-container').innerHTML = faqHTML;
-            document.getElementById('form-container').innerHTML = formHTML;
+            document.getElementById('assistance-form-container').innerHTML = assistanceFormHTML;
 
             // Aquí puedes añadir la lógica para la cuenta atrás
             function updateCountdown() {
