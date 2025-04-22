@@ -20,17 +20,29 @@ body {
 .full-viewport-section {
     min-height: 100vh;
     display: flex;
-    /*flex-direction: column;*/
-    /*justify-content: center;*/
+    flex-direction: column;
+    justify-content: center;
     padding: 2rem;
     box-sizing: border-box;
     background-color: transparent;
+    text-align: center; /* Centramos el texto dentro de las secciones por defecto */
+}
+
+#locations-container,
+#faq-container {
+    background-color: #fffaf6;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    padding: 3rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    text-align: left; /* Alineamos el texto a la izquierda en estas secciones */
 }
 
 /* Estilos para pantallas más pequeñas (móviles) */
 @media (max-width: 767px) {
     .container {
-        padding: 0; /* Eliminamos el padding del contenedor en móviles */
+        padding: 1rem; /* Reducimos el padding del contenedor en móviles */
         max-width: 100%; /* Ocupar todo el ancho en móviles */
         border-radius: 0;
         box-shadow: none;
@@ -38,8 +50,16 @@ body {
     }
 
     .full-viewport-section {
-        padding-left: 1rem; /* Mantenemos un pequeño padding en los lados del contenido */
-        padding-right: 1rem;
+        padding-left: 1rem; /* Reducimos el padding izquierdo de las secciones en móviles */
+        padding-right: 1rem; /* Reducimos el padding derecho de las secciones en móviles */
+        padding-top: 1rem; /* Añadimos un poco de padding superior e inferior en móviles */
+        padding-bottom: 1rem;
+    }
+
+    #locations-container,
+    #faq-container {
+        padding: 1.5rem; /* Reducimos el padding en estas secciones también para móviles */
+        margin: 1rem auto; /* Reducimos el margen en estas secciones también para móviles */
     }
 }
 
