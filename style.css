@@ -20,8 +20,8 @@ body {
 .full-viewport-section {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
     padding: 2rem;
     box-sizing: border-box;
     background-color: transparent;
@@ -30,16 +30,16 @@ body {
 /* Estilos para pantallas más pequeñas (móviles) */
 @media (max-width: 767px) {
     .container {
-        padding: 1rem; /* Reducimos el padding del contenedor en móviles */
+        padding: 0; /* Eliminamos el padding del contenedor en móviles */
         max-width: 100%; /* Ocupar todo el ancho en móviles */
-        border-radius: 0; /* Opcional: quitar bordes redondeados en móviles */
-        box-shadow: none; /* Opcional: quitar la sombra en móviles */
-        margin-top: 0; /* Opcional: quitar margen superior en móviles */
+        border-radius: 0;
+        box-shadow: none;
+        margin-top: 0;
     }
 
     .full-viewport-section {
-        padding-left: 1rem; /* Reducimos el padding izquierdo de las secciones en móviles */
-        padding-right: 1rem; /* Reducimos el padding derecho de las secciones en móviles */
+        padding-left: 0; /* Mantenemos un pequeño padding en los lados del contenido */
+        padding-right: 0;
     }
 }
 
