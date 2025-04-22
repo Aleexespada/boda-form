@@ -52,6 +52,11 @@
     </div>
 
     <script>
+        /**
+         * Carga el contenido de las diferentes secciones de la página
+         * desde archivos HTML externos y los inserta en sus respectivos contenedores.
+         * También inicializa el formulario de asistencia y la cuenta atrás.
+         */
         async function loadContent() {
             const countdownResponse = await fetch('modules/countdown.html');
             const locationsResponse = await fetch('modules/locations.html');
@@ -71,7 +76,17 @@
             document.getElementById('faq-container').innerHTML = faqHTML;
             document.getElementById('assistance-form-container').innerHTML = assistanceFormHTML;
 
-            // Script para el spinner del botón de formulario (ejecutado después de cargar el HTML)
+            initializeAssistanceForm(); // Llamamos a la función para inicializar el formulario
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        /**
+         * Inicializa el formulario de asistencia añadiendo un event listener
+         * al evento 'submit' para mostrar un spinner en el botón
+         * y simular un tiempo de carga antes de enviar el formulario.
+         */
+        function initializeAssistanceForm() {
             const form = document.querySelector("#rsvp-form");
             const btn = document.getElementById("submitBtn");
 
@@ -87,34 +102,35 @@
                     }, 1500);
                 });
             }
+        }
 
-            // Aquí puedes añadir la lógica para la cuenta atrás
-            function updateCountdown() {
-                const weddingDate = new Date('2025-09-20T00:00:00'); // Año-Mes-DíaTHora:Minuto:Segundo
-                const now = new Date();
-                const difference = weddingDate.getTime() - now.getTime();
+        /**
+         * Actualiza la cuenta atrás mostrando los días, horas, minutos y segundos
+         * restantes hasta la fecha de la boda.
+         */
+        function updateCountdown() {
+            const weddingDate = new Date('2025-09-20T00:00:00'); // Año-Mes-DíaTHora:Minuto:Segundo
+            const now = new Date();
+            const difference = weddingDate.getTime() - now.getTime();
 
-                if (difference <= 0) {
-                    document.getElementById('countdown').innerHTML = '¡La boda ha comenzado!';
-                    return;
-                }
-
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = days;
-                document.getElementById('hours').textContent = hours;
-                document.getElementById('minutes').textContent = minutes;
-                document.getElementById('seconds').textContent = seconds;
+            if (difference <= 0) {
+                document.getElementById('countdown').innerHTML = '¡La boda ha comenzado!';
+                return;
             }
 
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
         }
 
         loadContent();
     </script>
+    
 </body>
 </html>
