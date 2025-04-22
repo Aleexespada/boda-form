@@ -34,4 +34,22 @@
         </button>
 
     </form>
+
+    <script>
+        const form = document.querySelector("#rsvp-form");
+        const btn = document.getElementById("submitBtn");
+
+        if (form && btn) {
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                btn.disabled = true;
+                btn.classList.add("loading");
+
+                setTimeout(() => {
+                    form.submit();
+                }, 1500);
+            });
+        }
+    </script>
 </section>
