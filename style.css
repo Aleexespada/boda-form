@@ -4,41 +4,36 @@ body {
     color: #40322b;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Para evitar barras de desplazamiento horizontales innecesarias */
+    overflow-x: hidden;
 }
 
 .container {
     max-width: 600px;
-    margin: 0 auto; /* Centrar horizontalmente */
+    margin: 0 auto;
     padding: 2rem;
     background-color: #fffaf6;
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
     border-radius: 12px;
-    /* Eliminamos margin-top para que las secciones ocupen toda la altura */
 }
 
 /* Estilos para las secciones que ocuparán la altura de la pantalla */
-section {
+.full-viewport-section {
     min-height: 100vh; /* 100% de la altura del viewport */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centrar el contenido verticalmente dentro de la sección */
     padding: 2rem; /* Asegurar un espaciado interno */
     box-sizing: border-box; /* Incluir el padding en el alto */
-    /* El background-color de cada sección puede ser transparente para heredar del body
-       o puedes darle un color diferente si lo deseas */
-    background-color: transparent;
+    background-color: transparent; /* Para heredar el fondo del body */
 }
 
 /* Estilos específicos para el contenedor principal en pantallas más grandes */
 @media (min-width: 768px) {
     .container {
-        margin-top: 3rem; /* Restauramos el margen superior para centrar el contenedor verticalmente */
+        margin-top: 3rem;
     }
 
-    section {
-        /* En pantallas grandes, el contenedor centrará el contenido horizontalmente
-           y el min-height: 100vh seguirá haciendo que la sección ocupe toda la altura */
+    .full-viewport-section {
         padding-left: calc(50% - 300px); /* Ajuste para el padding izquierdo */
         padding-right: calc(50% - 300px); /* Ajuste para el padding derecho */
     }
@@ -59,7 +54,7 @@ label {
     display: block;
     margin-bottom: 0.3rem;
     font-weight: bold;
-    text-align: left !important; /* Mantenemos el important si es necesario */
+    text-align: left !important;
 }
 
 input[type="text"],
