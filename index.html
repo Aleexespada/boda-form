@@ -71,6 +71,23 @@
             document.getElementById('faq-container').innerHTML = faqHTML;
             document.getElementById('assistance-form-container').innerHTML = assistanceFormHTML;
 
+            // Script para el spinner del botón de formulario (ejecutado después de cargar el HTML)
+            const form = document.querySelector("#rsvp-form");
+            const btn = document.getElementById("submitBtn");
+
+            if (form && btn) {
+                form.addEventListener("submit", (event) => {
+                    event.preventDefault();
+
+                    btn.disabled = true;
+                    btn.classList.add("loading");
+
+                    setTimeout(() => {
+                        form.submit();
+                    }, 1500);
+                });
+            }
+
             // Aquí puedes añadir la lógica para la cuenta atrás
             function updateCountdown() {
                 const weddingDate = new Date('2025-09-20T00:00:00'); // Año-Mes-DíaTHora:Minuto:Segundo
