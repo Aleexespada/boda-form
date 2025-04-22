@@ -38,8 +38,8 @@ body {
     }
 
     .full-viewport-section {
-        padding-left: 0; /* Mantenemos un pequeño padding en los lados del contenido */
-        padding-right: 0;
+        padding-left: 1rem; /* Mantenemos un pequeño padding en los lados del contenido */
+        padding-right: 1rem;
     }
 }
 
