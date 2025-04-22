@@ -12,19 +12,35 @@ body {
     margin: 0 auto;
     padding: 2rem;
     background-color: #fffaf6;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
     border-radius: 12px;
+    /* Eliminado el box-shadow */
 }
 
 /* Estilos para las secciones que ocuparán la altura de la pantalla */
 .full-viewport-section {
-    min-height: 100vh; /* 100% de la altura del viewport */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrar el contenido verticalmente dentro de la sección */
-    padding: 2rem; /* Asegurar un espaciado interno */
-    box-sizing: border-box; /* Incluir el padding en el alto */
-    background-color: transparent; /* Para heredar el fondo del body */
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+/* Estilos para pantallas más pequeñas (móviles) */
+@media (max-width: 767px) {
+    .container {
+        padding: 1rem; /* Reducimos el padding del contenedor en móviles */
+        max-width: 100%; /* Ocupar todo el ancho en móviles */
+        border-radius: 0; /* Opcional: quitar bordes redondeados en móviles */
+        box-shadow: none; /* Opcional: quitar la sombra en móviles */
+        margin-top: 0; /* Opcional: quitar margen superior en móviles */
+    }
+
+    .full-viewport-section {
+        padding-left: 1rem; /* Reducimos el padding izquierdo de las secciones en móviles */
+        padding-right: 1rem; /* Reducimos el padding derecho de las secciones en móviles */
+    }
 }
 
 /* Estilos específicos para el contenedor principal en pantallas más grandes */
@@ -34,8 +50,8 @@ body {
     }
 
     .full-viewport-section {
-        padding-left: calc(50% - 300px); /* Ajuste para el padding izquierdo */
-        padding-right: calc(50% - 300px); /* Ajuste para el padding derecho */
+        padding-left: calc(50% - 300px);
+        padding-right: calc(50% - 300px);
     }
 }
 
