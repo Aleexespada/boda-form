@@ -3,61 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucía & Álvaro - Confirmación</title>
+    <title>Lucía & Álvaro - Nuestra Boda</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            /* Aquí definimos el fondo que compartirán todas las secciones */
+            background-color: #fdf6f0; /* Ejemplo de color de fondo */
+        }
+
+        section {
+            /* Estilos básicos para las secciones */
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background-color: transparent; /* Para que se vea el fondo del body */
+        }
+
+        #countdown-section { /* Estilos específicos para la sección de cuenta atrás */
+            text-align: center;
+        }
+
+        #locations-section, #faq-section { /* Ejemplo de estilos para otras secciones */
+            background-color: #fffaf6; /* Un fondo diferente si lo deseas */
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            padding: 3rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        /* Añade más estilos para las otras secciones según necesites */
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Nos casamos</h1>
-        <p>¡Estamos deseando celebrar con vosotros! Por favor, rellena el siguiente formulario para confirmar tu asistencia.</p>
+        <header>
+        </header>
 
-        <form action="https://formsubmit.co/alexespadap@gmail.com" method="POST" id="rsvp-form">
-            <div class="form-group">
-                <label for="nombreInvitado">Nombre y Apellidos</label>
-                <input type="text" id="nombreInvitado" name="nombreInvitado" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
-            </div>
+        <main>
+            <div id="countdown-container"></div>
+            <div id="locations-container"></div>
+            <div id="program-container"></div>
+            <div id="faq-container"></div>
+            <div id="form-container"></div>
+        </main>
 
-            <div class="form-group">
-                <label for="nombreAcompanante">Nombre y Apellido (Acompañante)</label>
-                <input type="text" id="nombreAcompanante" name="nombreAcompanante" placeholder="Rellenar solo si el acompañante no tiene invitación" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
-            </div>
-
-            <div class="form-group">
-                <label for="direccion">Dirección</label>
-                <input type="text" id="direccion" name="direccion" required>
-            </div>
-
-            <div class="form-group">
-                <label for="alergias">Intolerancias y alergias</label>
-                <input type="text" id="alergias" name="alergias">
-            </div>
-
-            <input type="hidden" name="sitio" value="boda-formulario">
-            <input type="hidden" name="_next" value="https://Aleexespada.github.io/boda-form/gracias.html">
-            <input type="hidden" name="_captcha" value="false">
-
-            <button type="submit" id="submitBtn">
-                <span class="btn-text">Enviar</span>
-                <span class="btn-spinner"></span>
-            </button>
-
-        </form>
+        <footer>
+        </footer>
     </div>
 
     <script>
-        const form = document.querySelector("form");
-        const btn = document.getElementById("submitBtn");
+        async function loadContent() {
+            const countdownResponse = await fetch('modules/countdown.html');
+            const locationsResponse = await fetch('modules/locations.html');
+            const programResponse = await fetch('modules/program.html');
+            const faqResponse = await fetch('modules/faq.html');
+            const formResponse = await fetch('modules/form.html');
 
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
+            const countdownHTML = await countdownResponse.text();
+            const locationsHTML = await locationsResponse.text();
+            const programHTML = await programResponse.text();
+            const faqHTML = await faqResponse.text();
+            const formHTML = await formResponse.text();
 
-            btn.disabled = true;
-            btn.classList.add("loading");
+            document.getElementById('countdown-container').innerHTML = countdownHTML;
+            document.getElementById('locations-container').innerHTML = locationsHTML;
+            document.getElementById('program-container').innerHTML = programHTML;
+            document.getElementById('faq-container').innerHTML = faqHTML;
+            document.getElementById('form-container').innerHTML = formHTML;
 
-            setTimeout(() => {
-                form.submit();
-            }, 1500);
-        });
+            // Aquí puedes añadir la lógica para la cuenta atrás
+            function updateCountdown() {
+                const weddingDate = new Date('2025-09-20T00:00:00'); // Año-Mes-DíaTHora:Minuto:Segundo
+                const now = new Date();
+                const difference = weddingDate.getTime() - now.getTime();
+
+                if (difference <= 0) {
+                    document.getElementById('countdown').innerHTML = '¡La boda ha comenzado!';
+                    return;
+                }
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        loadContent();
     </script>
 </body>
 </html>
