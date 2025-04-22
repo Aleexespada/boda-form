@@ -16,6 +16,10 @@ body {
     margin-top: 3rem;
 }
 
+.center-text {
+    text-align: center;
+}
+
 h1 {
     font-size: 2rem;
     color: #a1645e;
@@ -23,14 +27,14 @@ h1 {
 }
 
 .form-group {
-    margin-bottom: 1.5rem; /* Añadido espacio entre los grupos de campos */
+    margin-bottom: 1.5rem;
 }
 
 label {
     display: block;
     margin-bottom: 0.3rem;
     font-weight: bold;
-    text-align: left; /* Alinea las etiquetas a la izquierda */
+    text-align: left; /* Aseguramos que las etiquetas estén a la izquierda */
 }
 
 input[type="text"],
@@ -43,7 +47,7 @@ input[type="email"] {
     box-sizing: border-box;
 }
 
-input::placeholder { /* Estilo para el texto del placeholder */
+input::placeholder {
     color: #776b63;
     font-style: italic;
 }
