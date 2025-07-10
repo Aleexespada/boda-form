@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucía & Álvaro - Nuestra Boda</title>
+    <link rel="stylesheet" href="styles/colors.css">
+    <link rel="stylesheet" href="styles/form-style.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+        </header>
+
+        <main>
+            <div id="countdown-container" class="full-viewport-section"></div>
+            <div id="locations-container" class="full-viewport-section"></div>
+            <div id="program-container" class="full-viewport-section"></div>
+            <div id="faq-container" class="full-viewport-section"></div>
+            <div id="assistance-form-container" class="full-viewport-section"></div>
+        </main>
+
+        <footer>
+        </footer>
+    </div>
+
+    <script>
+        /**
+         * Carga el contenido de las diferentes secciones de la página
+         * desde archivos HTML externos y los inserta en sus respectivos contenedores.
+         * También inicializa el formulario de asistencia y la cuenta atrás.
+         */
+        async function loadContent() {
+            const countdownResponse = await fetch('modules/countdown.html');
+            const locationsResponse = await fetch('modules/locations.html');
+            const programResponse = await fetch('modules/program.html');
+            const faqResponse = await fetch('modules/faq.html');
+            const assistanceFormResponse = await fetch('modules/assistance-form.html');
+
+            const countdownHTML = await countdownResponse.text();
+            const locationsHTML = await locationsResponse.text();
+            const programHTML = await programResponse.text();
+            const faqHTML = await faqResponse.text();
+            const assistanceFormHTML = await assistanceFormResponse.text();
+
+            document.getElementById('countdown-container').innerHTML = countdownHTML;
+            document.getElementById('locations-container').innerHTML = locationsHTML;
+            document.getElementById('program-container').innerHTML = programHTML;
+            document.getElementById('faq-container').innerHTML = faqHTML;
+            document.getElementById('assistance-form-container').innerHTML = assistanceFormHTML;
+
+            initializeAssistanceForm(); // Llamamos a la función para inicializar el formulario
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        /**
+         * Inicializa el formulario de asistencia añadiendo un event listener
+         * al evento 'submit' para mostrar un spinner en el botón
+         * y simular un tiempo de carga antes de enviar el formulario.
+         */
+        function initializeAssistanceForm() {
+            const form = document.querySelector("#rsvp-form");
+            const btn = document.getElementById("submitBtn");
+
+            if (form && btn) {
+                form.addEventListener("submit", (event) => {
+                    event.preventDefault();
+
+                    btn.disabled = true;
+                    btn.classList.add("loading");
+
+                    setTimeout(() => {
+                        form.submit();
+                    }, 1500);
+                });
+            }
+        }
+
+        /**
+         * Actualiza la cuenta atrás mostrando los días, horas, minutos y segundos
+         * restantes hasta la fecha de la boda.
+         */
+        function updateCountdown() {
+            const weddingDate = new Date('2025-09-20T00:00:00'); // Año-Mes-DíaTHora:Minuto:Segundo
+            const now = new Date();
+            const difference = weddingDate.getTime() - now.getTime();
+
+            if (difference <= 0) {
+                document.getElementById('countdown').innerHTML = '¡La boda ha comenzado!';
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        loadContent();
+    </script>
+    
+</body>
+</html>
